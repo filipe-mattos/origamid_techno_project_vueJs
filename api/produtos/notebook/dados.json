@@ -1,0 +1,23 @@
+{
+  "id": "notebook",
+  "nome": "Notebook",
+  "preco": "3999",
+  "descricao": "desc teste",
+  "img": "./api/produtos/notebook/notebook-foto.jpg",
+  "estoque": 20,
+  "avaliacoes": [{
+        "nome": "Fabio",
+        "estrelas": 5,
+        "avaliacao": "Gostei muito do produto"
+    },
+    {
+        "nome": "Thiago",
+        "estrelas": 5,
+        "avaliacao": "Gostei muito do produto"
+    },
+    {
+        "nome": "Pedro",
+        "estrelas": 4,
+        "avaliacao": "Gostei muito do produto, porem é muito caro"
+    }]
+}
