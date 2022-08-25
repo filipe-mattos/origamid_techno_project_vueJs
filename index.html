@@ -6,11 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="./vue.min.js"></script>
     <link rel="stylesheet" href="./style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
     <title>Techno</title>
 </head>
 <body>
     <div id="app">
-        {{produtos}}
+
+        <section class="modal">
+            {{produto}}
+        </section>
+
+        <section class="produtos">
+            <div v-for="produto in produtos" @click="fetchProduto(produto.id)" :key="produto.id" class="produto">
+                <img :src="produto.img" :alt="produto.nome" class="produto_img">
+                <div class="produto-info">
+                    <span class="produto-preco">{{produto.preco | numeroPreco}}</span>
+                    <h2 class="produto-nome">{{produto.nome}}</h2>
+                </div>
+            </div>
+        </section>
     </div>
 
     <script src="./app.js"></script>
