@@ -3,7 +3,7 @@ const app = new Vue({
     data: {
         mensagem: "Teste",
         produtos: [],
-        produto: {}
+        produto: false
     },
     filters: {
         numeroPreco(value){
@@ -19,12 +19,23 @@ const app = new Vue({
                 });
         },
 
-        fetchProduto(id){
+        _fetchProduto(id){
             fetch(`./api/produtos/${id}/dados.json`)
                 .then( r => r.json())
                 .then(r => {
                     this.produto = r;
                 });
+        },
+        abrirModal(id){
+            this._fetchProduto(id);
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            })
+        },
+        fecharModal({target, currentTarget}){
+            if(target === currentTarget)
+                this.produto = false;
         }
 
     },
