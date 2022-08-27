@@ -3,7 +3,8 @@ const app = new Vue({
     data: {
         mensagem: "Teste",
         produtos: [],
-        produto: false
+        produto: false,
+        carrinho: []
     },
     filters: {
         numeroPreco(value){
@@ -36,8 +37,28 @@ const app = new Vue({
         fecharModal({target, currentTarget}){
             if(target === currentTarget)
                 this.produto = false;
+        },
+        adicionarItem(){
+            this.produto.estoque--;
+            const {id, nome, preco} = this.produto;
+            this.carrinho.push({
+                id, nome, preco
+            });
+        },
+        removerItem(index){
+            this.carrinho.splice(index,1);
         }
 
+    },
+    computed: {
+        carrinhoTotal(){
+            let total = 0;
+            if(this.carrinho.length)
+                this.carrinho.forEach(item => {
+                    total += item.preco;
+                })
+            return total;
+        }
     },
     created(){
         this.fetchProdutos();

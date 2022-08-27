@@ -1,7 +1,7 @@
 {
   "id": "notebook",
   "nome": "Notebook",
-  "preco": "3999",
+  "preco": 3999,
   "descricao": "desc teste",
   "img": "./api/produtos/notebook/notebook-foto.jpg",
   "estoque": 20,
