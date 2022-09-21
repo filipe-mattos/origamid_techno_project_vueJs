@@ -60,6 +60,11 @@ const app = new Vue({
             this.mensagemAlerta = mensagem;
             this.alertaAtivo = true;
             setTimeout(() => this.alertaAtivo = false, 1500);
+        },
+        router(){
+            const hashMensage = document.location.hash;
+            if(hashMensage)
+                this._fetchProduto(hashMensage.replace("#", ""));
         }
 
     },
@@ -75,11 +80,17 @@ const app = new Vue({
     },
     created(){
         this.fetchProdutos();
+        this.router();
         this.checkLocalStorage();
     },
     watch: {
         carrinho(){
             window.localStorage.carrinho = JSON.stringify(this.carrinho); 
         },
+        produto(){
+            document.title = this.produto.nome || "Techno";
+            const hashMensage = this.produto.id || "";
+            history.pushState(null,null, `#${hashMensage}`);
+        }
     }
 })
